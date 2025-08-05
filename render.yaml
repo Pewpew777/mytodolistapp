@@ -26,7 +26,7 @@ services:
 
   - type: pserv
     name: laravel-mysql
-    env: image           #THIS is the fix
+    env: docker          #THIS is the fix
     plan: free
     image: mysql:8.0    
     envVars:
