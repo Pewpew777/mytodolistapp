@@ -28,8 +28,7 @@ services:
     name: laravel-mysql
     env: image           #THIS is the fix
     plan: free
-    image:
-      name: mysql:8.0    
+    image: mysql:8.0    
     envVars:
       - key: MYSQL_DATABASE
         value: mytodolist
