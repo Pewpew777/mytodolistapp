@@ -27,8 +27,6 @@ COPY . /var/www/html
 # Set Apache DocumentRoot to /var/www/html/public
 RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
@@ -39,6 +37,5 @@ RUN chmod +x /entrypoint.sh
 
 # Expose port 80
 EXPOSE 80
-RUN php artisan config:cache
 # Start with entrypoint script
 CMD ["/entrypoint.sh"]

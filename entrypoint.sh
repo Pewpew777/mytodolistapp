@@ -1,5 +1,15 @@
-#!/bin/sh
-# Run Laravel migrations (ignore errors if DB isn't ready)
-php artisan migrate --force || true
+#!/bin/bash
+
+# Set permissions
+chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
+# Install PHP dependencies
+composer install --no-dev --optimize-autoloader
+
+# Laravel setup
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+
 # Start Apache
 apache2-foreground
