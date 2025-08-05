@@ -26,10 +26,10 @@ services:
 
   - type: pserv
     name: laravel-mysql
-    env: docker
+    env: image           #THIS is the fix
     plan: free
-    dockerfilePath: ""
-    image: mysql:8.0
+    image:
+      name: mysql:8.0    
     envVars:
       - key: MYSQL_DATABASE
         value: mytodolist
@@ -39,3 +39,4 @@ services:
       name: data
       mountPath: /var/lib/mysql
       sizeGB: 1
+
