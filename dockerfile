@@ -24,6 +24,9 @@ WORKDIR /var/www/html
 # Copy existing application directory contents
 COPY . /var/www/html
 
+# Set Apache DocumentRoot to /var/www/html/public
+RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
+
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
