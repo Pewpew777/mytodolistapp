@@ -3,7 +3,7 @@ services:
     name: laravel-app
     env: docker
     plan: free
-    dockerfilePath: ./dockerfile
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: APP_ENV
         value: production
@@ -26,9 +26,9 @@ services:
 
   - type: pserv
     name: laravel-mysql
-    env: docker-image        #THIS is the fix
+    env: docker-image        # This line is key
     plan: free
-    image: mysql:8.0    
+    image: mysql:8.0         #  This is OK ONLY with docker-image
     envVars:
       - key: MYSQL_DATABASE
         value: mytodolist
@@ -38,4 +38,3 @@ services:
       name: data
       mountPath: /var/lib/mysql
       sizeGB: 1
-
